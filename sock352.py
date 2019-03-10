@@ -34,7 +34,8 @@ class socket:
     def __init__(self):  # fill in your code here
 	#create socket
 	self.syssock = syssock.socket(syssock.AF_INET, syssock.SOCK_DGRAM)	 
-        return
+        self.udpPkt_hdr_data= struct.Struct(sock352PktHdrData)
+	return
     
     def bind(self,address):
 	#bind the socket
@@ -67,10 +68,10 @@ class socket:
 		csocket.recv(SOCK352_SYN)
 		csocket.send(SOCK352_ACK)
 
-		self.socket.connect(address, int(UDPportRx))
+		self.connect(address, portRx )
 		print("Client Connected")
 
-	return 
+		return 
     
     def listen(self,backlog):
         #dont need for this project
@@ -90,7 +91,7 @@ class socket:
 
     def send(self,buffer):
         bytessent = 0     # fill in your code here 
-        return bytesent 
+        return bytessent 
 
     def recv(self,nbytes):
         bytesreceived = 0     # fill in your code here
