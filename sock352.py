@@ -8,9 +8,9 @@ import sys
 # and received from
 
 #flags
-SOCK352_SYN = bytearray(0x01)      
+SOCK352_SYN = 0x01      
 SOCK352_FIN = 0x02          
-SOCK352_ACK = bytearray(0x04)   
+SOCK352_ACK = 0x04
 SOCK352_RESET = 0x08     
 SOECK352_HAS_OPT = 0xA0  
 #portTx = 0
@@ -32,11 +32,18 @@ def init(UDPportTx,UDPportRx):   # initialize your UDP socket here
 class socket:
     
     def __init__(self):  # fill in your code here
-		 
+	#create socket
+	self.syssock = syssock.socket(syssock.AF_INET, syssock.SOCK_DGRAM)	 
         return
     
     def bind(self,address):
-        return 
+	#bind the socket
+	try: 
+		self.syssock.bind(address)
+	except IOError:
+		print ("Binding failed.")
+	print("Socket is bound")
+	return 
 
     def connect(self,address):  # fill in your code here 
         return 
